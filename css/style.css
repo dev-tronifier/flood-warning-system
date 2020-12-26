@@ -1,0 +1,106 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  --denim-blue: #588fc3;
+}
+
+h1 {
+  color: var(--denim-blue);
+  margin-bottom: 10px;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto minmax(0,1fr);
+  grid-template-columns: 15% minmax(0,1fr);
+  grid-template-areas:
+    "header header"
+    "nav    main";
+  font-family: courier, arial, helvectica;
+}
+
+header {
+  grid-area: header;          /* in body */
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 1%;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav {
+  grid-area: nav;             /* in body */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--denim-blue);
+}
+
+nav a {
+  margin: 10px 0;
+  color: white;
+  text-decoration: none;      /* remove underline */
+  font-weight: bold;
+}
+
+main {
+  grid-area: main;            /* in body */
+  display: grid;
+  grid-gap: 4%;
+  grid-template-rows: minmax(0,1fr) 20% minmax(0,1fr);
+  grid-template-columns: minmax(0,1fr) 40%;
+  grid-template-areas:
+    "graph weather"
+    "graph person"
+    "info  person";
+  padding: 10px 15px;
+}
+
+.box {
+  box-shadow: 0 0 5px 5px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.box h1 {
+  font-size: 1.3rem;
+}
+
+.box img {
+  width: 80%;
+}
+
+#water-level-graph {
+  grid-area: graph;           /* in main */
+}
+
+#water-level-info {
+  grid-area: info;            /* in main */
+  display: flex;
+  justify-content: space-between;
+}
+
+#water-level-info p {         /* information boxes */
+  width: 200px;
+  height: 20px;
+  text-align: center;
+}
+
+#status.normal::after {
+  content: "Normal";
+}
+
+#weather {
+  grid-area: weather;         /* in main */
+}
+
+#person-detection {
+  grid-area: person;          /* in main */
+}
