@@ -4,26 +4,52 @@
   <meta charset="utf-8">
   <title>Flood Warning System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="img/logo.jpg">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="icon" href="../static/images/tab-logo.png">
 </head>
 
 <body>
+
   <header>
-    <h1 id="logo">Pravah</h1>
+    <img src="../static/images/logo-purple.png" id="logo">
     <p id="user-name">Sohang Chopra</p>
   </header>
 
   <nav>
-    <a href="#">Dashboard</a>
-    <a href="#">Inform Public</a>
-    <a href="#">India Status</a>
+    <div class="nav__links">
+      <a href="#">
+        <div class="nav__item">
+        <img class="nav__item-icon" src="../static/images/icons/dashboard.svg">
+        <p class="nav__item-label">Dashboard</p>
+        </div>
+        </a>
+  
+        <a href="#">
+          <div class="nav__item">
+          <img class="nav__item-icon" src="../static/images/icons/infrom_public.svg">
+          <p class="nav__item-label">Inform Public</p>
+          </div>
+          </a>
+  
+          <a href="#">
+            <div class="nav__item">
+            <img class="nav__item-icon" src="../static/images/icons/india_status.png">
+            <p class="nav__item-label">India Status</p>
+            </div>
+            </a>
+    </div>
+
+    <div class="nav__credit">
+      <p class="nav__credit-text">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+      <p class="nav__credit-text">Logo from <a href="https://www.logomakr.com" >LogoMakr.com</a></p>
+    </div>
   </nav>
 
   <main>
+
     <section id="water-level-graph" class="box">
       <h1>Water Level Graph</h1>
-      <img src="img/water-level-graph.jpg">
+      <img src="../static/images/water-level-graph.jpg">
     </section>
 
     <section id="water-level-info">
@@ -38,7 +64,7 @@
 
     <section id="person-detection" class="box">
       <h1>Person Detection</h1>
-      <img src="img/person-detection.jpg">
+      <img src="../static/images/person-detection.jpg">
     </section>
   </main>
 </body>
