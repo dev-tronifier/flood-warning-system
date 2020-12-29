@@ -26,8 +26,7 @@ body {
   grid-template-columns: 15% minmax(0,1fr);
   grid-template-areas:
     "header header"
-    "nav    main";
-  
+    "nav    main";  
 }
 
 header {
@@ -48,8 +47,19 @@ header {
   height: 54px;
 }
 
-header h1 {
-  font-size: 1rem;
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#user-name {
+  color: #808080;
 }
 
 nav {
@@ -79,7 +89,7 @@ nav {
 }
 
 .nav__credit-text {
-  font-size: 8px;
+  font-size: 10px;
   color: #ffffff;
   margin-bottom: 5px;
 }
@@ -106,12 +116,12 @@ main {
     "graph weather"
     "graph person"
     "info  person";
-  padding: 10px 15px;
+  padding: 40px;
 }
 
 .box {
   background-color: #fff;
-  box-shadow: 5px 5px 0 0 rgba(0,0,0,0.05);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.05);
   border-radius: 20px;
   padding: 30px;
 }
@@ -134,10 +144,23 @@ main {
   justify-content: space-between;
 }
 
-#water-level-info p {         /* information boxes */
-  width: 250px;
-  height: 50px;
+#water-level-info div {         /* information boxes */
+  width: 200px;
+  height: 60px;
+  padding: 25px;
   text-align: center;
+}
+
+#current-level {
+  color: #769bfa;
+}
+
+#frl {
+  color: #fa7676;
+}
+
+#status {
+  color: #22b78a;
 }
 
 #status.normal::after {
