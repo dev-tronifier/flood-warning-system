@@ -4,20 +4,31 @@
   <meta charset="utf-8">
   <title>Flood Warning System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <link rel="icon" href="../static/images/tab-logo.png">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  {% block stylesheet %} {% endblock %}
+  <link rel="icon" href=" {{url_for('static', filename='images/tab-logo.png')}}">
 </head>
 
 <body>
 
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages%}
+      <div class="{{category}}">{{message}}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
   <header>
     <img src="../static/images/logo-purple.png" id="logo">
+    <p class="dam_name">{{current_user.works_at.name}}</p>
     <div class="user">
       <img class="user-icon" src="../static/images/icons/user-icon.png">
-      <p id="user-name">Sohang Chopra</p>
+      <p class="user-name">{{current_user.username}}</p>
+      <a class="logout" href="{{url_for('logout')}}">Logout</a>
     </div>
   </header>
-
+  
   <nav>
     <div class="nav__links">
       <a href="#">
@@ -47,28 +58,7 @@
       <p class="nav__credit-text">Logo from <a href="https://www.logomakr.com" >LogoMakr.com</a></p>
     </div>
   </nav>
+{% block content %} {% endblock %}
 
-  <main>
-
-    <section id="water-level-graph" class="box">
-      <h1>Water Level Graph</h1>
-      <img src="../static/images/water-level-graph.jpg">
-    </section>
-
-    <section id="water-level-info">
-      <div id="current-level" class="box">Current: 50 cm</div>
-      <div id="frl" class="box">FRL: 60</div>
-      <div id="status" class="box normal">Status: </div>
-    </section>
-
-    <section id="weather" class="box">
-      <h1>Today's Weather</h1>
-    </section>
-
-    <section id="person-detection" class="box">
-      <h1>Person Detection</h1>
-      <img src="../static/images/person-detection.jpg">
-    </section>
-  </main>
 </body>
 </html>

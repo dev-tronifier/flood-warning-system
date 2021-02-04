@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %} <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard-style.css')}}"> {% endblock %}
+
+{% block content %}
+
+<main>
+
+  <section id="water-level-graph" class="box">
+    <h1>Water Level Graph</h1>
+    <img src="../static/images/water-level-graph.jpg">
+  </section>
+
+  <section id="water-level-info">
+    <div id="current-level" class="box">Current: 50 cm</div>
+    <div id="frl" class="box">FRL: {{current_user.works_at.frl}}</div>
+    <div id="status" class="box normal">Status: </div>
+  </section>
+
+  <section id="weather" class="box">
+    <h1>Today's Weather</h1>
+  </section>
+
+  <section id="person-detection" class="box">
+    <h1>Person Detection</h1>
+    <img src="../static/images/person-detection.jpg">
+  </section>
+</main>
+
+{% endblock %}

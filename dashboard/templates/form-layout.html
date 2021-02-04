@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Flood Warning System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/form-style.css')}}">
+  <link rel="icon" href=" {{url_for('static', filename='images/tab-logo.png')}}">
+</head>
+
+<body>
+
+  <header>
+    <img src="../static/images/logo-purple.png" id="logo">
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages%}
+        <div class="{{category}}">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+{% block content %} {% endblock %}
+
+</body>
+</html>

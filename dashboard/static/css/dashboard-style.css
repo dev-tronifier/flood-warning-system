@@ -1,0 +1,68 @@
+main {
+    grid-area: main;            /* in body */
+    display: grid;
+    grid-gap: 4%;
+    grid-template-rows: minmax(0,1fr) 20% minmax(0,1fr);
+    grid-template-columns: minmax(0,1fr) 40%;
+    grid-template-areas:
+      "graph weather"
+      "graph person"
+      "info  person";
+    padding: 40px;
+  }
+  
+  .box {
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 30px;
+  }
+  
+  .box h1 {
+    font-size: 1.3rem;
+  }
+  
+  .box img {
+    width: 80%;
+  }
+  
+  #water-level-graph {
+    grid-area: graph;           /* in main */
+  }
+  
+  #water-level-info {
+    grid-area: info;            /* in main */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #water-level-info div {         /* information boxes */
+    width: 200px;
+    height: 60px;
+    padding: 25px;
+    text-align: center;
+  }
+  
+  #current-level {
+    color: #769bfa;
+  }
+  
+  #frl {
+    color: #fa7676;
+  }
+  
+  #status {
+    color: #22b78a;
+  }
+  
+  #status.normal::after {
+    content: "Normal";
+  }
+  
+  #weather {
+    grid-area: weather;         /* in main */
+  }
+  
+  #person-detection {
+    grid-area: person;          /* in main */
+  }
