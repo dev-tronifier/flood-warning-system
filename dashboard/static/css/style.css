@@ -47,9 +47,16 @@ header {
   height: 54px;
 }
 
+.dam_name {
+  color: var(--denim-blue);
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .user {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .user-icon {
@@ -58,8 +65,18 @@ header {
   margin-right: 10px;
 }
 
-#user-name {
+.user-name {
   color: #808080;
+  margin-right: 30px;
+}
+
+.logout {
+  color: #808080;
+  text-decoration: none;
+}
+
+.logout:hover {
+  text-decoration: underline;
 }
 
 nav {
@@ -106,71 +123,28 @@ nav a:hover {
   text-decoration: underline;
 }
 
-main {
-  grid-area: main;            /* in body */
-  display: grid;
-  grid-gap: 4%;
-  grid-template-rows: minmax(0,1fr) 20% minmax(0,1fr);
-  grid-template-columns: minmax(0,1fr) 40%;
-  grid-template-areas:
-    "graph weather"
-    "graph person"
-    "info  person";
-  padding: 40px;
-}
-
-.box {
-  background-color: #fff;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-  border-radius: 20px;
-  padding: 30px;
-}
-
-.box h1 {
-  font-size: 1.3rem;
-}
-
-.box img {
-  width: 80%;
-}
-
-#water-level-graph {
-  grid-area: graph;           /* in main */
-}
-
-#water-level-info {
-  grid-area: info;            /* in main */
-  display: flex;
-  justify-content: space-between;
-}
-
-#water-level-info div {         /* information boxes */
-  width: 200px;
-  height: 60px;
-  padding: 25px;
+.flash_fail {
+  max-width: 500px;
+  height: 30px;
+  margin: 0 auto;
+  margin-top: 2%;
+  padding: 5px 20px;
   text-align: center;
+  background-color: #f2c8c8;
+  color: #734343;
+  border-radius: 20px;
+  border: 1px solid #734343;
 }
 
-#current-level {
-  color: #769bfa;
-}
-
-#frl {
-  color: #fa7676;
-}
-
-#status {
-  color: #22b78a;
-}
-
-#status.normal::after {
-  content: "Normal";
-}
-
-#weather {
-  grid-area: weather;         /* in main */
-}
-
-#person-detection {
-  grid-area: person;          /* in main */
+.flash_success {
+  max-width: 500px;
+  height: 30px;
+  margin: 0 auto;
+  margin-top: 2%;
+  padding: 5px 20px;
+  text-align: center;
+  background-color: #c8f2d7;
+  color: #43735b;
+  border-radius: 10px;
+  border: 1px solid #43735b;
 }

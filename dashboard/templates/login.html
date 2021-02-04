@@ -1,0 +1,49 @@
+{% extends "form-layout.html" %}
+{% block content %}
+<main class="main">
+    <h2>Sign In</h2>
+    <form class="user-form" method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="user-form__input">
+            {{form.username.label(class="user-form__input-label")}}
+
+            {% if form.username.errors %}
+                {{form.username(class="user-form__input-data-invalid")}}
+                <div class="invalid-input-message">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.username(class="user-form__input-data")}}
+            {% endif %}
+        </div>
+        
+        <div class="user-form__input">
+            {{form.password.label(class="user-form__input-label")}}
+
+            {% if form.password.errors %}
+                {{form.password(class="user-form__input-data-invalid")}}
+                <div class="invalid-input-message">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.password(class="user-form__input-data")}}
+            {% endif %}
+        </div>
+        
+        <div class="remember">
+            {{form.remember(class="remember-checkbox")}}
+            {{form.remember.label(class="remember-text")}}
+        </div>
+
+        <div class="user-form__submit">
+             <small class="user-form__submit-text">Don't have an account? <a  class="user-form__submit-text-link" href="{{ url_for('register') }}">Sign Up</a></small>
+            {{form.submit(class="form__submit")}}
+        </div>
+    </form>
+</main>
+
+{% endblock %}
