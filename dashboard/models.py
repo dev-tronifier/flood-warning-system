@@ -9,8 +9,11 @@ def load_user(user_id):
 class Dam(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True, nullable=False)
+    status = db.Column(db.String(10), nullable=False, default="NORMAL")
     location = db.Column(db.String(60), nullable=False)
     state = db.Column(db.String(20), nullable=False)
+    latitude = db.Column(db.String(10), nullable=False)
+    longitude = db.Column(db.String(10), nullable=False)
     frl = db.Column(db.Integer, nullable=False)
     devices = db.relationship('Device', backref='installed_at', lazy=True)
     users = db.relationship('User', backref='works_at', lazy=True)
@@ -42,9 +45,10 @@ class Device(db.Model):
         return f"Device({self.name}, {self.mac}, {self.data_measured})"
 
 class Data(db.Model):
-    data = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.Integer, nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow())
     device_id = db.Column(db.Integer, db.ForeignKey('device.id'), nullable=False)
 
     def __repr__(self):
-        return f"{self.data}, {self.timestamp}"
+        return f"Data({self.data}, {self.timestamp})"

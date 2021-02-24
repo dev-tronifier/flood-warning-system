@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+ <link rel="stylesheet" href="{{url_for('static', filename='css/public-inform-style.css')}}"> 
+ <link rel="stylesheet" href="{{url_for('static', filename='css/form-style.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="col1">
+        <div id="sms-telegram" class="box">
+            <h1>Send SMS and Telegram Message</h1>
+            <form class="user-form" method="POST" action="">
+                {{ sms_form.hidden_tag() }}
+                <div class="user-form__input">
+        
+                    {% if sms_form.message_sms.errors %}
+                        {{sms_form.message_sms(class="user-form__input-data-invalid")}}
+                        <div class="invalid-input-message">
+                            {% for error in sms_form.message_sms.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{sms_form.message_sms(class="user-form__input-data")}}
+                    {% endif %}
+                </div>
+                <div class="user-form__submit">
+                    {{sms_form.submit_sms(class="form__submit")}}
+                </div>
+            </form>
+        </div>
+
+        <div id="twitter" class="box">
+            <h1>Make a Tweet</h1>
+            <form class="user-form" method="POST" action="">
+                {{ twitter_form.hidden_tag() }}
+                <div class="user-form__input">
+        
+                    {% if twitter_form.message_twitter.errors %}
+                        {{twitter_form.message_twitter(class="user-form__input-data-invalid")}}
+                        <div class="invalid-input-message">
+                            {% for error in twitter_form.message_twitter.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{twitter_form.message_twitter(class="user-form__input-data")}}
+                    {% endif %}
+                </div>
+                <div class="user-form__submit">
+                    {{twitter_form.submit_twitter(class="form__submit")}}
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="col2">
+        <div id="email" class="box">
+            <h1>Send Email</h1>
+            <form class="user-form" method="POST" action="">
+                {{ email_form.hidden_tag() }}
+                <div class="user-form__input">
+        
+                    {% if email_form.subject_email.errors %}
+                        {{email_form.subject_email(class="user-form__input-data-invalid")}}
+                        <div class="invalid-input-message">
+                            {% for error in email_form.subject_email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{email_form.subject_email(class="user-form__input-data")}}
+                    {% endif %}
+                </div>
+
+                <div class="user-form__input">
+        
+                    {% if email_form.message_email.errors %}
+                        {{email_form.message_email(class="user-form__input-data-invalid")}}
+                        <div class="invalid-input-message">
+                            {% for error in email_form.message_email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{email_form.message_email(class="user-form__input-data")}}
+                    {% endif %}
+                </div>
+                <div class="user-form__submit">
+                    {{email_form.submit_email(class="form__submit")}}
+                </div>
+            </form>
+        </div>
+
+        <div id="voice" class="box">
+            <h1>Voice Alert</h1>
+            <input type="button" value="Alert Public" onclick="play()" class="play" id="play-button">
+
+        </div>
+    </div>
+
+    <script>
+        function play() {
+            path = '{{url_for("static",filename="voice.mp3")}}';
+            audio = new Audio(path);
+            audio.play();
+        }
+      </script>
+
+</main>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
 import email_validator
 from dashboard.models import User, Device, Data, Dam
@@ -53,7 +53,20 @@ class DeviceForm(FlaskForm):
     data_measured = StringField('Data Measured',
                                 validators=[DataRequired(), Length(min=1, max=30)])
 
-    api_key = StringField('API Key',
-                          validators=[DataRequired(), Length(min=32, max=32)])
-
     submit = SubmitField('Add Device')
+
+
+class SMSForm(FlaskForm):
+    message_sms = TextAreaField('Enter your message', validators=[DataRequired()])
+    submit_sms = SubmitField('Send Message')
+
+
+class TwitterForm(FlaskForm):
+    message_twitter = TextAreaField('Enter your message', validators=[DataRequired()])
+    submit_twitter = SubmitField('Send Tweet')
+
+
+class EmailForm(FlaskForm):
+    subject_email = StringField("Subject",validators=[DataRequired()], render_kw={'placeholder':'Subject'})
+    message_email = TextAreaField('Enter your message', validators=[DataRequired()])
+    submit_email = SubmitField('Send Email')
