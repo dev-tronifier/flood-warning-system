@@ -11,13 +11,6 @@
 
 <body>
 
-  {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages%}
-      <div class="{{category}}">{{message}}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 
   <header>
     <img src="../static/images/logo-purple.png" id="logo">
@@ -31,33 +24,44 @@
   
   <nav>
     <div class="nav__links">
-      <a href="#">
+
+      <a href="{{url_for('dashboard')}}">
         <div class="nav__item">
         <img class="nav__item-icon" src="../static/images/icons/dashboard.svg">
         <p class="nav__item-label">Dashboard</p>
         </div>
-        </a>
+      </a>
   
-        <a href="#">
-          <div class="nav__item">
-          <img class="nav__item-icon" src="../static/images/icons/infrom_public.svg">
-          <p class="nav__item-label">Inform Public</p>
-          </div>
-          </a>
+      <a href="{{url_for('inform_public')}}">
+        <div class="nav__item">
+        <img class="nav__item-icon" src="../static/images/icons/infrom_public.svg">
+        <p class="nav__item-label">Inform Public</p>
+        </div>
+      </a>
   
-          <a href="#">
-            <div class="nav__item">
-            <img class="nav__item-icon" src="../static/images/icons/india_status.png">
-            <p class="nav__item-label">India Status</p>
-            </div>
-            </a>
+      <a href="{{url_for('dashboard')}}">
+        <div class="nav__item">
+        <img class="nav__item-icon" src="../static/images/icons/india_status.png">
+        <p class="nav__item-label">India Status</p>
+        </div>
+      </a>
+
     </div>
 
     <div class="nav__credit">
       <p class="nav__credit-text">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+      <p class="nav__credit-text">Weather Icons made by <a href="https://www.iconfinder.com/Neolau1119" title="Sihan Liu">Sihan Liu</a></p>
       <p class="nav__credit-text">Logo from <a href="https://www.logomakr.com" >LogoMakr.com</a></p>
     </div>
   </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages%}
+      <div class="{{category}}">{{message}}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 {% block content %} {% endblock %}
 
 </body>
