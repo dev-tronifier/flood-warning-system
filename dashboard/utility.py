@@ -119,11 +119,13 @@ def inform_public_telegram(message):
 
         response = requests.post(url, params=data)
         if json.loads(response.text)["ok"]:
-            print("Message sent to Public.")
+            print("Telegram message sent to Public.")
+        return True
+
     except Exception as e:
         print(e)
-        print("Message not sent. Some problem occurred!")
-
+        print("Telegram message not sent. Some problem occurred!")
+        return False
 
 def inform_public_sms(message):
     client = Client(TWILIO_ACC_SID, TWILIO_AUTH_TOKEN)
@@ -134,9 +136,12 @@ def inform_public_sms(message):
                 body=message,
                 to=number
             )
+        print("SMS sent to Public.")
         return True
 
-    except Exception:
+    except Exception as e:
+        print("SMS not sent. Some error occurred!")
+        print(e)
         return False
 
 
@@ -150,6 +155,7 @@ def send_email_authority(subject, message):
 
     response = requests.post(url, auth=("api", MAILGUN_API_KEY), data= data)
 
+    print(response.text)
     if response.status_code == 200:
         print("Email sent")
         return True
@@ -162,10 +168,11 @@ def send_tweet(message):
     twitter = Twython(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
     try:
         response = twitter.update_status(status=message)
-        print(f"Tweet ID: {response['id_str']} Created at: {response['created_at']}")
+        print(f"Tweet sent: Tweet ID: {response['id_str']} Created at: {response['created_at']}")
         return True
 
     except Exception as e:
+        print("Tweet not sent. Some error occurred!")
         print(e)
         return False
 

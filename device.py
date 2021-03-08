@@ -5,7 +5,7 @@ import requests
 
 
 while True:
-    api_key = 'dBHdGb4lir5GW980olKHKrIPB4bQEDqzxxmxf5VQdrs'
+    api_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     data = random.randrange(0,200)
     time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
