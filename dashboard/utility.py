@@ -1,9 +1,10 @@
 from dashboard.models import User, Device, Data, Dam
 from dashboard import app, bcrypt, db
-from dashboard.conf import *
+from dotenv import load_dotenv
 from flask_login import current_user
 from twilio.rest import Client
 from twython import Twython
+import os
 import time
 import pyttsx3
 import datetime
@@ -11,6 +12,7 @@ import json
 import requests
 import secrets
 
+load_dotenv()
 phone_numbers = ['+919871116254', '+919871624028']
 
 def get_current_level():
@@ -28,7 +30,7 @@ def get_current_level():
 
 
 def get_cur_weather():
-    api_key = WEATHER_KEY
+    api_key = os.environ.get("WEATHER_KEY")
     lat = current_user.works_at.latitude
     lon = current_user.works_at.longitude
     url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}"
@@ -86,7 +88,7 @@ def determine_status(cur_level):
 
 def inform_officials(status, cur_level=0, num_persons=0):
     try:
-        url = f'https://api.telegram.org/{BOT_ID}/sendMessage'
+        url = f'https://api.telegram.org/{os.environ.get("BOT_ID")}/sendMessage'
 
         if num_persons > 0:
             message = f'''{status} ALERT
@@ -99,7 +101,7 @@ Dam is {int(cur_level * 100 / current_user.works_at.frl)}% full
 Current Water Level: {cur_level}
 Dam is {int(cur_level * 100 / current_user.works_at.frl)}% full'''
 
-        data = {"chat_id": OFFICIALS_CHAT_ID,
+        data = {"chat_id": os.environ.get("OFFICIALS_CHAT_ID"),
                 "text": message}
 
         response = requests.post(url, params=data)
@@ -112,9 +114,9 @@ Dam is {int(cur_level * 100 / current_user.works_at.frl)}% full'''
 
 def inform_public_telegram(message):
     try:
-        url = f'https://api.telegram.org/{BOT_ID}/sendMessage'
+        url = f'https://api.telegram.org/{os.environ.get("BOT_ID")}/sendMessage'
 
-        data = {"chat_id": PUBLIC_CHAT_ID,
+        data = {"chat_id": os.environ.get("PUBLIC_CHAT_ID"),
                 "text": message}
 
         response = requests.post(url, params=data)
@@ -128,11 +130,11 @@ def inform_public_telegram(message):
         return False
 
 def inform_public_sms(message):
-    client = Client(TWILIO_ACC_SID, TWILIO_AUTH_TOKEN)
+    client = Client(os.environ.get("TWILIO_ACC_SID"), os.environ.get("TWILIO_AUTH_TOKEN"))
     try:
         for number in phone_numbers:
             message = client.messages.create(
-                messaging_service_sid=TWILIO_SERVICE_SID,
+                messaging_service_sid=os.environ.get("TWILIO_SERVICE_SID"),
                 body=message,
                 to=number
             )
@@ -146,14 +148,14 @@ def inform_public_sms(message):
 
 
 def send_email_authority(subject, message):
-    url = f'https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages'
+    url = f'https://api.mailgun.net/v3/{os.environ.get("MAILGUN_DOMAIN")}/messages'
 
-    data = {"from": f"{current_user.works_at.name} <mailgun@{MAILGUN_DOMAIN}>",
+    data = {"from": f"{current_user.works_at.name} <mailgun@{os.environ.get('MAILGUN_DOMAIN')}>",
             "to": ["tejpunjraju8a@gmail.com", "sohangchopra@gmail.com"],
             "subject": subject,
             "text": message}
 
-    response = requests.post(url, auth=("api", MAILGUN_API_KEY), data= data)
+    response = requests.post(url, auth=("api", os.environ.get("MAILGUN_API_KEY")), data= data)
 
     print(response.text)
     if response.status_code == 200:
@@ -165,7 +167,10 @@ def send_email_authority(subject, message):
 
 
 def send_tweet(message):
-    twitter = Twython(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
+    twitter = Twython(os.environ.get("TWITTER_CONSUMER_KEY"),
+                      os.environ.get("TWITTER_CONSUMER_SECRET"),
+                      os.environ.get("TWITTER_ACCESS_TOKEN"),
+                      os.environ.get("TWITTER_ACCESS_TOKEN_SECRET"))
     try:
         response = twitter.update_status(status=message)
         print(f"Tweet sent: Tweet ID: {response['id_str']} Created at: {response['created_at']}")
