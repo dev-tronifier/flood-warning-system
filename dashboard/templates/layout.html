@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Flood Warning System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  {% block stylesheet %} {% endblock %}
+  <link rel="icon" href=" {{url_for('static', filename='images/tab-logo.png')}}">
+</head>
+
+<body>
+
+
+  <header>
+    <img src="../static/images/logo-purple.png" id="logo">
+    <p class="dam_name">{{current_user.works_at.name}}</p>
+    <div class="user">
+      <img class="user-icon" src="../static/images/icons/user-icon.png">
+      <p class="user-name">{{current_user.username}}</p>
+      <a class="logout" href="{{url_for('logout')}}">Logout</a>
+    </div>
+  </header>
+  
+  <nav>
+    <div class="nav__links">
+
+      <a href="{{url_for('dashboard')}}">
+        <div class="nav__item">
+        <img class="nav__item-icon" src="../static/images/icons/dashboard.svg">
+        <p class="nav__item-label">Dashboard</p>
+        </div>
+      </a>
+  
+      <a href="{{url_for('inform_public')}}">
+        <div class="nav__item">
+        <img class="nav__item-icon" src="../static/images/icons/infrom_public.svg">
+        <p class="nav__item-label">Inform Public</p>
+        </div>
+      </a>
+  
+      <a href="{{url_for('dashboard')}}">
+        <div class="nav__item">
+        <img class="nav__item-icon" src="../static/images/icons/india_status.png">
+        <p class="nav__item-label">India Status</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="nav__credit">
+      <p class="nav__credit-text">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+      <p class="nav__credit-text">Weather Icons made by <a href="https://www.iconfinder.com/Neolau1119" title="Sihan Liu">Sihan Liu</a></p>
+      <p class="nav__credit-text">Logo from <a href="https://www.logomakr.com" >LogoMakr.com</a></p>
+    </div>
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages%}
+      <div class="{{category}}">{{message}}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% block content %} {% endblock %}
+
+</body>
+</html>

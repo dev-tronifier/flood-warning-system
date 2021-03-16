@@ -1,0 +1,114 @@
+main {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.col1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 3;
+}
+
+.col2 {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 2;
+}
+
+.box {
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 10px;
+}
+
+.box h1 {
+  font-size: 1.3rem;
+}
+
+.box img {
+  margin: auto;
+}
+
+#water-level-graph {
+  margin: 10px;
+  width: 650px;
+} 
+
+#water-level-info {          /* in main */
+  display: flex;
+  justify-content: space-between;
+}
+
+#water-level-info div {         /* information boxes */
+  width: 200px;
+  height: 60px;
+  padding: 25px;
+  text-align: center;
+}
+
+#current-level {
+  color: #769bfa;
+}
+
+#frl {
+  color: #fa7676;
+}
+
+#weather {
+  height: 250px;
+}
+
+.weather_data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.weather_icon-pic {
+  height: 150px;
+  width: 150px;
+}
+
+#weather-span {
+  color:#858585;
+}
+
+#weather-desc {
+  color:#fa7676;
+}
+
+#weather-temp {
+  font-size: 400%;
+}
+
+#person-detection {
+  height: 400px;
+}
+
+#detection-image {
+  margin-top: 5px;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+}
+
+#add_device {
+  width: 200px;
+  height: 60px;
+  padding: 25px;
+  text-align: center;
+  text-decoration: bold;
+  font-weight: bold;
+  font-size: large;
+  color: #769bfa;
+}
+
+a {
+  text-decoration: none;
+}

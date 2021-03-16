@@ -1,0 +1,93 @@
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+  }
+  
+  .col1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+
+  }
+  
+  .col2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  .box {
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 10px;
+  }
+  
+  .box h1 {
+    font-size: 1.3rem;
+  }
+
+  #sms-telegram h1 {
+    color: #fa7676;
+  }
+
+  #twitter h1 {
+    color: #769bfa;
+  }
+
+  #email h1 {
+    color: #22b78a;
+  }
+
+  #voice h1 {
+    color: #b076fa;
+  }
+
+  #sms-telegram .form__submit {
+    background-color: #fa7676;
+  }
+
+  #sms-telegram .form__submit:hover {
+    background-color: #fc4a4a;
+  }
+
+  #email .form__submit {
+    background-color: #22b78a;
+  }
+
+  #email .form__submit:hover {
+    background-color: #1fa17a;
+  }
+
+  #voice .form__submit {
+    background-color: #b076fa;
+  }
+
+  #voice .form__submit:hover {
+    background-color: #8e3ff5;
+  }
+
+  textarea.user-form__input-data {
+    height: 200px;
+    margin-top: 10px;
+  }
+
+  .play {
+    width: 30%;
+    background-color: #b076fa;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 20px;
+    color:white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.play:hover {
+  background-color: #8e3ff5;
+}

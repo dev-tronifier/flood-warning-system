@@ -1,0 +1,57 @@
+{% extends "form-layout.html" %}
+{% block content %}
+<main class="main">
+    <h2>Add a Device</h2>
+    <form class="user-form" method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="user-form__input">
+            {{form.name.label(class="user-form__input-label")}}
+
+            {% if form.name.errors %}
+                {{form.name(class="user-form__input-data-invalid")}}
+                <div class="invalid-input-message">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.name(class="user-form__input-data")}}
+            {% endif %}
+        </div>
+
+        <div class="user-form__input">
+            {{form.mac.label(class="user-form__input-label")}}
+
+            {% if form.mac.errors %}
+                {{form.mac(class="user-form__input-data-invalid")}}
+                <div class="invalid-input-message">
+                    {% for error in form.mac.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.mac(class="user-form__input-data")}}
+            {% endif %}
+        </div>
+        
+        <div class="user-form__input">
+            {{form.data_measured.label(class="user-form__input-label")}}
+
+            {% if form.data_measured.errors %}
+                {{form.data_measured(class="user-form__input-data-invalid")}}
+                <div class="invalid-input-message">
+                    {% for error in form.data_measured.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.data_measured(class="user-form__input-data")}}
+            {% endif %}
+        </div>
+        <div class="user-form__submit">
+            {{form.submit(class="form__submit")}}
+        </div>
+    </form>
+</main>
+
+{% endblock %}

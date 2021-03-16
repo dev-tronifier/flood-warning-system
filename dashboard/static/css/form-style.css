@@ -1,0 +1,119 @@
+
+.user-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-form__input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-form__input-label {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.user-form__input-data{
+    width: inherit;
+    height: 40px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+
+}
+
+.user-form__input-data-invalid{
+    width: inherit;
+    height: 40px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.invalid-input-message {
+    color: red;
+    size: 12px;
+    margin-bottom: 20px;
+}
+
+.user-form__submit {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remember {
+    align-self: start;
+    margin-bottom: 20px;
+}
+
+.form__submit {
+    background-color: #769bfa;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 20px;
+    color:white;
+    cursor: pointer;
+}
+
+.form__submit:hover {
+    background-color: #2c65f6;
+}
+
+.user-form__submit-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-form__submit-text {
+    color: #747474;
+}
+
+.user-form__submit-text-link {
+    text-decoration: none;
+    color:#769bfa;
+}
+
+.user-form__submit-text-link:hover {
+    text-decoration: underline;
+    color:#2c65f6;
+}
+
+.flash_fail {
+    max-width: 500px;
+    height: 30px;
+    margin: auto auto;
+    margin-top: 2%;
+    padding: 5px 20px;
+    text-align: center;
+    background-color: #f2c8c8;
+    color: #734343;
+    border-radius: 20px;
+    border: 1px solid #734343;
+}
+
+.flash_success {
+    max-width: 500px;
+    height: 30px;
+    margin: auto auto;
+    margin-top: 2%;
+    padding: 5px 20px;
+    text-align: center;
+    background-color: #c8f2d7;
+    color: #43735b;
+    border-radius: 10px;
+    border: 1px solid #43735b;
+}

@@ -1,0 +1,15 @@
+twython==3.8.2
+Flask_RESTful==0.3.8
+Flask==1.1.2
+pyttsx3==2.90
+email_validator==1.1.2
+Flask_Bcrypt==0.7.1
+twilio==6.52.0
+requests==2.25.1
+Flask_Login==0.5.0
+Flask_SQLAlchemy==2.4.4
+WTForms==2.3.3
+Flask_WTF==0.14.3
+Pillow==8.1.2
+python-dotenv==0.15.0
+secrets==1.0.2
