@@ -1,13 +1,13 @@
 from time import sleep
-import datetime
-import random
+from datetime import datetime
+from random import randrange
 import requests
 
 
 while True:
     api_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    data = random.randrange(0,200)
-    time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    data = randrange(0,200)
+    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     to_send =  {'api_key': api_key, 'data': data, 'timestamp': time}
 
@@ -15,4 +15,3 @@ while True:
 
     print(response.status_code)
     sleep(30)
-
